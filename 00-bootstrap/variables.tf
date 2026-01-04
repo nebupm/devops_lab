@@ -17,6 +17,12 @@ variable "environment" {
   default     = "lab"
 }
 
+variable "force_destroy" {
+  description = "Force destroy S3 bucket even if it contains objects"
+  type        = bool
+  default     = false
+}
+
 variable "state_bucket_prefix" {
   description = "Prefix for S3 bucket name (will be suffixed with account-id and region)"
   type        = string

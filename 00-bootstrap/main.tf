@@ -13,7 +13,8 @@ data "aws_region" "current" {}
 # S3 bucket for Terraform state
 # S3 bucket for Terraform state with account ID for uniqueness
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "${var.state_bucket_prefix}-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.region}"
+  bucket        = "${var.state_bucket_prefix}-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.region}"
+  force_destroy = var.force_destroy
 
   tags = {
     Name        = "Terraform State Bucket"
