@@ -17,6 +17,16 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
+# Setup Key Pair
+resource "aws_key_pair" "main" {
+  key_name   = "${var.environment}-instance-keypair"
+  public_key = file("../../../ec2_all_keys/aws-ec2-linux-instance-public-key.pub")
+  tags = {
+    Name        = "${var.environment}-keypair"
+    Environment = var.environment
+  }
+}
+
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true

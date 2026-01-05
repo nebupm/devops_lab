@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+set -euxo pipefail
 
 MODULE_DIR=${1:-.}
 BOOTSTRAP_DIR="00-bootstrap"

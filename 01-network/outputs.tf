@@ -32,3 +32,13 @@ output "state_bucket_name" {
   description = "Constructed S3 bucket name for state"
   value       = local.state_bucket_name
 }
+
+output "key_pair_name" {
+  description = "Name of the SSH key pair"
+  value       = aws_key_pair.main.key_name
+}
+
+output "allowed_ssh_cidr" {
+  description = "This is the CIDR tht will be set in the security group"
+  value       = var.allowed_ssh_cidr
+}
